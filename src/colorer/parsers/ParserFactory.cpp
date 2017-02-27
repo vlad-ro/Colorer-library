@@ -59,7 +59,7 @@ SString ParserFactory::searchCatalog() const
   }
   LOG(DEBUG) << "end search catalog.xml";
   if (right_path.length() == 0) {
-    LOGF(ERRORF, "Can't find suitable catalog.xml file. Check your program settings.");
+    LOGF(ERROR, "Can't find suitable catalog.xml file. Check your program settings.");
     throw ParserFactoryException(CString("Can't find suitable catalog.xml file. Check your program settings."));
   }
   return right_path;
@@ -181,8 +181,8 @@ void ParserFactory::loadHrc(const String* hrc_path, const String* base_path) con
   try {
     hrc_parser->loadSource(dfis.get());
   } catch (Exception &e) {
-    LOGF(ERRORF, "Can't load hrc: %s", XStr(dfis->getInputSource()->getSystemId()).get_char());
-    LOG(ERRORF) << e.what();
+    LOGF(ERROR, "Can't load hrc: %s", XStr(dfis->getInputSource()->getSystemId()).get_char());
+    LOG(ERROR) << e.what();
   }
 }
 
